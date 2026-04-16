@@ -1,0 +1,53 @@
+{
+  "$schema": "./schemas/approval-policies.schema.json",
+  "policies": [
+    {
+      "policy_key": "trusted-ats-low-risk",
+      "lane_type": "ats_lane",
+      "host_risk_tier": "low",
+      "artifact_review_scope": "per_batch",
+      "answer_review_scope": "per_batch",
+      "submit_review_scope": "per_batch",
+      "allow_batch_artifact_approval": true,
+      "allow_batch_submit_approval": true,
+      "requires_manual_submit_preview": false,
+      "requires_new_answer_review": true
+    },
+    {
+      "policy_key": "ats-medium-risk",
+      "lane_type": "ats_lane",
+      "host_risk_tier": "medium",
+      "artifact_review_scope": "per_job",
+      "answer_review_scope": "per_job",
+      "submit_review_scope": "per_job",
+      "allow_batch_artifact_approval": false,
+      "allow_batch_submit_approval": false,
+      "requires_manual_submit_preview": true,
+      "requires_new_answer_review": true
+    },
+    {
+      "policy_key": "linkedin-restricted-high-risk",
+      "lane_type": "linkedin_restricted",
+      "host_risk_tier": "high",
+      "artifact_review_scope": "per_job",
+      "answer_review_scope": "per_job",
+      "submit_review_scope": "per_job",
+      "allow_batch_artifact_approval": false,
+      "allow_batch_submit_approval": false,
+      "requires_manual_submit_preview": true,
+      "requires_new_answer_review": true
+    },
+    {
+      "policy_key": "manual-fallback-high-risk",
+      "lane_type": "manual_fallback",
+      "host_risk_tier": "high",
+      "artifact_review_scope": "per_job",
+      "answer_review_scope": "per_job",
+      "submit_review_scope": "per_job",
+      "allow_batch_artifact_approval": false,
+      "allow_batch_submit_approval": false,
+      "requires_manual_submit_preview": true,
+      "requires_new_answer_review": true
+    }
+  ]
+}

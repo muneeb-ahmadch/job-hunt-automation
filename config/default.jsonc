@@ -1,0 +1,44 @@
+{
+  "$schema": "./schemas/app-config.schema.json",
+  "runtime": {
+    "environment": "local",
+    "dryRun": true,
+    "defaultBrowserHeaded": true,
+    "timezone": "local"
+  },
+  "storage": {
+    "databaseUrlEnv": "DATABASE_URL",
+    "artifactRootEnv": "ARTIFACT_ROOT",
+    "rawImportRootEnv": "RAW_IMPORT_ROOT",
+    "screenshotRootEnv": "SCREENSHOT_ROOT",
+    "traceRootEnv": "TRACE_ROOT",
+    "logRootEnv": "LOG_ROOT",
+    "browserProfileDirEnv": "BROWSER_PROFILE_DIR"
+  },
+  "openai": {
+    "apiKeyEnv": "OPENAI_API_KEY",
+    "defaultModelEnv": "OPENAI_DEFAULT_MODEL",
+    "smallModelEnv": "OPENAI_SMALL_MODEL",
+    "strongModelEnv": "OPENAI_STRONG_MODEL"
+  },
+  "costControls": {
+    "enableCaching": true,
+    "skipCoverLetterByDefault": true,
+    "onlyGenerateArtifactsForTopPercent": 20,
+    "onlyGenerateAnswersOnDemand": true,
+    "monthlySoftUsdCapEnv": "MONTHLY_SOFT_USD_CAP"
+  },
+  "routing": {
+    "mustHaveCoverageStrongSkipBelow": 45,
+    "prioritySkipBelow": 55,
+    "priorityConsiderBelow": 70,
+    "artifactCandidateAtOrAbove": 70,
+    "executionPriorityAtOrAbove": 78
+  },
+  "security": {
+    "redactLogs": true,
+    "sendCookiesToModels": false,
+    "sendPasswordsToModels": false,
+    "sendTokensToModels": false
+  }
+}

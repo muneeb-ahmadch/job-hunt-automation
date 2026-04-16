@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@job-hunt/adapters": ["packages/adapters/src/index.ts"],
+      "@job-hunt/browser": ["packages/browser/src/index.ts"],
+      "@job-hunt/core": ["packages/core/src/index.ts"],
+      "@job-hunt/db": ["packages/db/src/index.ts"],
+      "@job-hunt/llm": ["packages/llm/src/index.ts"],
+      "@job-hunt/ops": ["packages/ops/src/index.ts"],
+      "@job-hunt/prompts": ["packages/prompts/src/index.ts"],
+      "@job-hunt/registry": ["packages/registry/src/index.ts"],
+      "@job-hunt/renderer": ["packages/renderer/src/index.ts"],
+      "@job-hunt/scheduler": ["packages/scheduler/src/index.ts"],
+      "@job-hunt/schemas": ["packages/schemas/src/index.ts"],
+      "@job-hunt/shared-ui": ["packages/shared-ui/src/index.ts"],
+      "@job-hunt/workflows": ["packages/workflows/src/index.ts"]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "execution-policies.schema.json",
+  "type": "object",
+  "required": ["policies"],
+  "properties": {
+    "policies": {
+      "type": "array"
+    }
+  }
+}

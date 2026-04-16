@@ -1,0 +1,85 @@
+{
+  "$schema": "./schemas/execution-policies.schema.json",
+  "policies": [
+    {
+      "policy_key": "ats-low-risk-batch",
+      "lane_type": "ats_lane",
+      "host_risk_tier": "low",
+      "execution_mode": "ats_adapter_execution",
+      "max_concurrency": 2,
+      "rate_limit_per_minute": 12,
+      "approval_scope": "per_batch",
+      "submit_mode": "per_batch",
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_seconds": [60, 300, 1200]
+      },
+      "captcha_policy": "pause_and_wait",
+      "timeout_policy": {
+        "page_load_ms": 30000,
+        "step_ms": 10000
+      },
+      "upload_policy": "auto_if_approved"
+    },
+    {
+      "policy_key": "browser-medium-risk-per-job",
+      "lane_type": "ats_lane",
+      "host_risk_tier": "medium",
+      "execution_mode": "browser_fallback",
+      "max_concurrency": 1,
+      "rate_limit_per_minute": 6,
+      "approval_scope": "per_job",
+      "submit_mode": "per_job",
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_seconds": [120, 900]
+      },
+      "captcha_policy": "pause_and_wait",
+      "timeout_policy": {
+        "page_load_ms": 45000,
+        "step_ms": 15000
+      },
+      "upload_policy": "review_required"
+    },
+    {
+      "policy_key": "linkedin-restricted",
+      "lane_type": "linkedin_restricted",
+      "host_risk_tier": "high",
+      "execution_mode": "browser_fallback",
+      "max_concurrency": 1,
+      "rate_limit_per_minute": 2,
+      "approval_scope": "per_job",
+      "submit_mode": "per_job",
+      "retry_policy": {
+        "max_retries": 0,
+        "backoff_seconds": []
+      },
+      "captcha_policy": "manual_takeover",
+      "timeout_policy": {
+        "page_load_ms": 45000,
+        "step_ms": 15000
+      },
+      "upload_policy": "review_required"
+    },
+    {
+      "policy_key": "manual-only",
+      "lane_type": "manual_fallback",
+      "host_risk_tier": "high",
+      "execution_mode": "manual_only",
+      "max_concurrency": 1,
+      "rate_limit_per_minute": 1,
+      "approval_scope": "per_job",
+      "submit_mode": "per_job",
+      "retry_policy": {
+        "max_retries": 0,
+        "backoff_seconds": []
+      },
+      "captcha_policy": "dead_letter",
+      "timeout_policy": {
+        "page_load_ms": 30000,
+        "step_ms": 10000
+      },
+      "upload_policy": "manual_only"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "app-config.schema.json",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["runtime", "storage", "openai", "costControls", "routing", "security"],
+  "properties": {
+    "runtime": {
+      "type": "object",
+      "required": ["dryRun", "defaultBrowserHeaded"]
+    },
+    "storage": {
+      "type": "object",
+      "required": [
+        "databaseUrlEnv",
+        "artifactRootEnv",
+        "rawImportRootEnv",
+        "screenshotRootEnv",
+        "traceRootEnv",
+        "logRootEnv",
+        "browserProfileDirEnv"
+      ]
+    },
+    "openai": {
+      "type": "object",
+      "required": ["apiKeyEnv", "defaultModelEnv", "smallModelEnv", "strongModelEnv"]
+    },
+    "costControls": {
+      "type": "object",
+      "required": [
+        "enableCaching",
+        "skipCoverLetterByDefault",
+        "onlyGenerateArtifactsForTopPercent",
+        "onlyGenerateAnswersOnDemand",
+        "monthlySoftUsdCapEnv"
+      ]
+    },
+    "routing": {
+      "type": "object",
+      "required": [
+        "mustHaveCoverageStrongSkipBelow",
+        "prioritySkipBelow",
+        "priorityConsiderBelow",
+        "artifactCandidateAtOrAbove",
+        "executionPriorityAtOrAbove"
+      ]
+    },
+    "security": {
+      "type": "object",
+      "required": ["redactLogs", "sendCookiesToModels", "sendPasswordsToModels", "sendTokensToModels"]
+    }
+  }
+}

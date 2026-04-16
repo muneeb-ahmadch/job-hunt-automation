@@ -1,0 +1,17 @@
+{
+  "name": "@job-hunt/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@job-hunt/schemas": "workspace:*",
+    "@tanstack/react-query": "^5.90.12",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  }
+}

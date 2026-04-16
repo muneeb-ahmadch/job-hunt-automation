@@ -1,0 +1,14 @@
+{
+  "name": "@job-hunt/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc --noEmit -p ../../tsconfig.json"
+  },
+  "dependencies": {
+    "@job-hunt/core": "workspace:*",
+    "@job-hunt/schemas": "workspace:*"
+  }
+}

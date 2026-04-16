@@ -1,0 +1,46 @@
+{
+  "name": "job-hunt-automation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "setup:local": "tsx scripts/setup.ts",
+    "dev": "corepack pnpm --parallel --filter @job-hunt/web --filter @job-hunt/worker dev",
+    "dev:web": "corepack pnpm --filter @job-hunt/web dev",
+    "dev:worker": "corepack pnpm --filter @job-hunt/worker dev",
+    "build": "corepack pnpm -r --if-present build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "config:check": "tsx scripts/check-config.ts",
+    "migrate": "tsx scripts/migrate.ts",
+    "seed": "tsx scripts/seed.ts",
+    "import:profile": "tsx scripts/import-profile.ts",
+    "requeue:batch": "tsx scripts/requeue-batch.ts",
+    "host-health:recompute": "tsx scripts/recompute-host-health.ts",
+    "purge:artifacts": "tsx scripts/purge-old-artifacts.ts"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "playwright": "^1.57.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^7.2.6",
+    "vitest": "^4.0.15"
+  }
+}
