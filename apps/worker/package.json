@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@job-hunt/core": "workspace:*",
+    "@job-hunt/db": "workspace:*",
+    "@job-hunt/registry": "workspace:*",
+    "@job-hunt/scheduler": "workspace:*",
     "@job-hunt/schemas": "workspace:*"
   }
 }

@@ -2,52 +2,112 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "app-config.schema.json",
   "type": "object",
-  "additionalProperties": true,
-  "required": ["runtime", "storage", "openai", "costControls", "routing", "security"],
+  "additionalProperties": false,
+  "required": ["runtime", "storage", "openai", "costControls", "routing", "security", "logging"],
   "properties": {
+    "$schema": { "type": "string" },
     "runtime": {
       "type": "object",
-      "required": ["dryRun", "defaultBrowserHeaded"]
+      "additionalProperties": false,
+      "required": ["environment", "dryRun", "defaultBrowserHeaded", "timezone"],
+      "properties": {
+        "environment": { "type": "string", "enum": ["local", "test", "ci"] },
+        "dryRun": { "type": "boolean" },
+        "defaultBrowserHeaded": { "type": "boolean" },
+        "timezone": { "type": "string", "minLength": 1 }
+      }
     },
     "storage": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "databaseUrlEnv",
         "artifactRootEnv",
         "rawImportRootEnv",
         "screenshotRootEnv",
+        "domSnapshotRootEnv",
         "traceRootEnv",
         "logRootEnv",
         "browserProfileDirEnv"
-      ]
+      ],
+      "properties": {
+        "databaseUrlEnv": { "type": "string", "minLength": 1 },
+        "artifactRootEnv": { "type": "string", "minLength": 1 },
+        "rawImportRootEnv": { "type": "string", "minLength": 1 },
+        "screenshotRootEnv": { "type": "string", "minLength": 1 },
+        "domSnapshotRootEnv": { "type": "string", "minLength": 1 },
+        "traceRootEnv": { "type": "string", "minLength": 1 },
+        "logRootEnv": { "type": "string", "minLength": 1 },
+        "browserProfileDirEnv": { "type": "string", "minLength": 1 }
+      }
     },
     "openai": {
       "type": "object",
-      "required": ["apiKeyEnv", "defaultModelEnv", "smallModelEnv", "strongModelEnv"]
+      "additionalProperties": false,
+      "required": ["apiKeyEnv", "defaultModelEnv", "smallModelEnv", "strongModelEnv"],
+      "properties": {
+        "apiKeyEnv": { "type": "string", "minLength": 1 },
+        "defaultModelEnv": { "type": "string", "minLength": 1 },
+        "smallModelEnv": { "type": "string", "minLength": 1 },
+        "strongModelEnv": { "type": "string", "minLength": 1 }
+      }
     },
     "costControls": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "enableCaching",
         "skipCoverLetterByDefault",
         "onlyGenerateArtifactsForTopPercent",
         "onlyGenerateAnswersOnDemand",
         "monthlySoftUsdCapEnv"
-      ]
+      ],
+      "properties": {
+        "enableCaching": { "type": "boolean" },
+        "skipCoverLetterByDefault": { "type": "boolean" },
+        "onlyGenerateArtifactsForTopPercent": { "type": "integer", "minimum": 1, "maximum": 100 },
+        "onlyGenerateAnswersOnDemand": { "type": "boolean" },
+        "monthlySoftUsdCapEnv": { "type": "string", "minLength": 1 }
+      }
     },
     "routing": {
       "type": "object",
+      "additionalProperties": false,
       "required": [
         "mustHaveCoverageStrongSkipBelow",
         "prioritySkipBelow",
         "priorityConsiderBelow",
         "artifactCandidateAtOrAbove",
         "executionPriorityAtOrAbove"
-      ]
+      ],
+      "properties": {
+        "mustHaveCoverageStrongSkipBelow": { "type": "number", "minimum": 0, "maximum": 100 },
+        "prioritySkipBelow": { "type": "number", "minimum": 0, "maximum": 100 },
+        "priorityConsiderBelow": { "type": "number", "minimum": 0, "maximum": 100 },
+        "artifactCandidateAtOrAbove": { "type": "number", "minimum": 0, "maximum": 100 },
+        "executionPriorityAtOrAbove": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
     },
     "security": {
       "type": "object",
-      "required": ["redactLogs", "sendCookiesToModels", "sendPasswordsToModels", "sendTokensToModels"]
+      "additionalProperties": false,
+      "required": ["redactLogs", "sendCookiesToModels", "sendPasswordsToModels", "sendTokensToModels"],
+      "properties": {
+        "redactLogs": { "type": "boolean" },
+        "sendCookiesToModels": { "const": false },
+        "sendPasswordsToModels": { "const": false },
+        "sendTokensToModels": { "const": false }
+      }
+    },
+    "logging": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["levelEnv", "logToFile", "redact"],
+      "properties": {
+        "levelEnv": { "type": "string", "minLength": 1 },
+        "logToFile": { "type": "boolean" },
+        "redact": { "type": "boolean" }
+      }
     }
   }
 }

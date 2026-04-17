@@ -2,10 +2,75 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "execution-policies.schema.json",
   "type": "object",
+  "additionalProperties": false,
   "required": ["policies"],
   "properties": {
+    "$schema": { "type": "string" },
     "policies": {
-      "type": "array"
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "policy_key",
+          "lane_type",
+          "host_risk_tier",
+          "execution_mode",
+          "max_concurrency",
+          "rate_limit_per_minute",
+          "approval_scope",
+          "submit_mode",
+          "retry_policy",
+          "captcha_policy",
+          "timeout_policy",
+          "upload_policy"
+        ],
+        "properties": {
+          "policy_key": { "type": "string", "minLength": 1 },
+          "lane_type": {
+            "type": "string",
+            "enum": ["linkedin_restricted", "ats_lane", "manual_fallback", "unsupported"]
+          },
+          "host_risk_tier": { "type": "string", "enum": ["low", "medium", "high"] },
+          "execution_mode": {
+            "type": "string",
+            "enum": ["ats_api_first", "ats_adapter_execution", "browser_fallback", "manual_only"]
+          },
+          "max_concurrency": { "type": "integer", "minimum": 1, "maximum": 10 },
+          "rate_limit_per_minute": { "type": "integer", "minimum": 1, "maximum": 120 },
+          "approval_scope": { "type": "string", "enum": ["per_job", "per_batch"] },
+          "submit_mode": { "type": "string", "enum": ["per_job", "per_batch"] },
+          "retry_policy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["max_retries", "backoff_seconds"],
+            "properties": {
+              "max_retries": { "type": "integer", "minimum": 0, "maximum": 10 },
+              "backoff_seconds": {
+                "type": "array",
+                "items": { "type": "integer", "minimum": 1 }
+              }
+            }
+          },
+          "captcha_policy": { "type": "string", "enum": ["pause_and_wait", "manual_takeover", "dead_letter"] },
+          "timeout_policy": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["page_load_ms", "step_ms"],
+            "properties": {
+              "page_load_ms": { "type": "integer", "minimum": 1000 },
+              "step_ms": { "type": "integer", "minimum": 1000 }
+            }
+          },
+          "upload_policy": {
+            "type": "string",
+            "enum": ["auto_if_approved", "review_required", "manual_only", "manual_review", "standard", "delayed", "unsupported"]
+          },
+          "answer_policy": { "type": "string" },
+          "manual_takeover_threshold": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
     }
   }
 }

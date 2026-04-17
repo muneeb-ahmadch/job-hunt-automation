@@ -27,10 +27,17 @@
     "purge:artifacts": "tsx scripts/purge-old-artifacts.ts"
   },
   "dependencies": {
-    "jsonc-parser": "^3.3.1"
+    "@sinclair/typebox": "^0.34.49",
+    "ajv": "^8.18.0",
+    "better-sqlite3": "^12.9.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "jsonc-parser": "^3.3.1",
+    "pino": "^10.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",

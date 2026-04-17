@@ -11,6 +11,7 @@
     "artifactRootEnv": "ARTIFACT_ROOT",
     "rawImportRootEnv": "RAW_IMPORT_ROOT",
     "screenshotRootEnv": "SCREENSHOT_ROOT",
+    "domSnapshotRootEnv": "DOM_SNAPSHOT_ROOT",
     "traceRootEnv": "TRACE_ROOT",
     "logRootEnv": "LOG_ROOT",
     "browserProfileDirEnv": "BROWSER_PROFILE_DIR"
@@ -40,5 +41,10 @@
     "sendCookiesToModels": false,
     "sendPasswordsToModels": false,
     "sendTokensToModels": false
+  },
+  "logging": {
+    "levelEnv": "LOG_LEVEL",
+    "logToFile": true,
+    "redact": true
   }
 }

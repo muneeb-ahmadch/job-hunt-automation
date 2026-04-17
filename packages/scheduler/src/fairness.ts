@@ -1,1 +1,1 @@
-export const fairnessStatus = "not-implemented" as const;
+export const fairnessStatus = "deferred-after-foundation" as const;
