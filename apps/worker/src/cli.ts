@@ -1,1 +1,1 @@
-export const workerCliStatus = "scaffold-only" as const;
+export const workerCliStatus = "foundation-runtime" as const;

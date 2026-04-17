@@ -1,1 +1,1 @@
-export const deadLetterStatus = "not-implemented" as const;
+export const deadLetterStatus = "event-model-foundation" as const;

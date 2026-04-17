@@ -17,23 +17,23 @@
 
 ## Phase 1: Shared Schemas And Config Validation
 
-- [ ] Implement TypeBox schema source files.
-- [ ] Add Ajv validator helpers.
-- [ ] Port appendix JSON schemas from `plan.md`.
-- [ ] Add schema fixtures for valid payloads.
-- [ ] Add schema fixtures for invalid payloads.
-- [ ] Enforce config schema with Ajv.
-- [ ] Add schema tests for all model output contracts.
+- [x] Implement TypeBox schema source files.
+- [x] Add Ajv validator helpers.
+- [x] Port appendix JSON schemas from `plan.md`.
+- [x] Add schema fixtures for valid payloads.
+- [x] Add schema fixtures for invalid payloads.
+- [x] Enforce config schema with Ajv.
+- [x] Add schema tests for all model output contracts.
 
 ## Phase 2: DB Package And Local Migrations
 
-- [ ] Add Drizzle and SQLite dependencies.
-- [ ] Implement SQLite client.
-- [ ] Implement initial schema tables.
-- [ ] Add migration generation/run command.
-- [ ] Add repository helpers.
-- [ ] Add fixture seed command.
-- [ ] Add DB integration tests.
+- [x] Add Drizzle and SQLite dependencies.
+- [x] Implement SQLite client.
+- [x] Implement initial schema tables.
+- [x] Add migration run command.
+- [x] Add repository helpers.
+- [x] Add fixture seed command.
+- [x] Add DB integration tests.
 
 ## Phase 3: Deterministic Core Logic
 
@@ -71,8 +71,8 @@
 
 ## Phase 6: Core Scheduler And Queue Management
 
-- [ ] Implement queue manager.
-- [ ] Implement lease acquisition and release.
+- [x] Implement queue manager foundation.
+- [x] Implement lease acquisition and completion foundation.
 - [ ] Implement stale lease recovery.
 - [ ] Implement host bucket controls.
 - [ ] Implement fairness scheduling.

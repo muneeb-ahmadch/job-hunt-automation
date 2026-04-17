@@ -8,6 +8,10 @@
   },
   "types": "./src/index.ts",
   "dependencies": {
-    "@job-hunt/schemas": "workspace:*"
+    "@job-hunt/schemas": "workspace:*",
+    "ajv": "^8.18.0",
+    "dotenv": "^17.4.2",
+    "jsonc-parser": "^3.3.1",
+    "pino": "^10.3.1"
   }
 }

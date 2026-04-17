@@ -1,24 +1,12 @@
-import { mkdirSync, existsSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 
-const runtimeDirectories = [
-  "data/local",
-  "data/profiles",
-  "data/exports",
-  "data/raw",
-  "data/screenshots",
-  "data/traces",
-  "data/logs",
-  "data/host-health",
-  "data/browser-profile"
-] as const;
+import { defaultRuntimeDirectoryNames, ensureDefaultRuntimeDirectories } from "@job-hunt/core";
 
-for (const directory of runtimeDirectories) {
-  mkdirSync(join(process.cwd(), directory), { recursive: true });
-}
+ensureDefaultRuntimeDirectories(process.cwd());
 
 if (!existsSync(join(process.cwd(), ".env"))) {
   console.log("No .env file found. Create one from .env.example before running LLM-backed workflows.");
 }
 
-console.log(`Prepared ${runtimeDirectories.length} local runtime directories.`);
+console.log(`Prepared ${defaultRuntimeDirectoryNames.length} local runtime directories.`);

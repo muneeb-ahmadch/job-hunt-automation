@@ -1,4 +1,4 @@
-import { executionModes, laneTypes } from "@job-hunt/schemas";
+import { executionModes, laneTypes, schemaRegistry } from "@job-hunt/schemas";
 
 const scaffoldItems = [
   "Batch-first local workflow",
@@ -12,7 +12,7 @@ export function App() {
   return (
     <main className="app-shell">
       <section className="intro-band">
-        <p className="eyebrow">Phase 0 scaffold</p>
+        <p className="eyebrow">Foundation runtime</p>
         <h1>Job Hunt Automation</h1>
         <p className="lede">
           Local-first queues, lane routing, truthful artifacts, explicit approvals, and host-aware execution.
@@ -29,8 +29,12 @@ export function App() {
           <p>{executionModes.join(", ")}</p>
         </article>
         <article>
+          <h2>Schema Contracts</h2>
+          <p>{Object.keys(schemaRegistry).length} shared contracts validate config, model outputs, queues, and reviews.</p>
+        </article>
+        <article>
           <h2>Next Build Step</h2>
-          <p>Implement shared schemas, config validation, and DB migrations before product flows.</p>
+          <p>Build deterministic intake, normalization, scoring, routing, and dry-run workflow orchestration.</p>
         </article>
       </section>
 
